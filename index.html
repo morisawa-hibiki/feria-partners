@@ -52,7 +52,7 @@
     box-shadow:0 1px 0 var(--line);
   }
   .brand{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-size:19px;letter-spacing:.04em;color:var(--ink);}
-  .brand img{height:34px;width:auto;}
+  .brand img{height:36px;width:auto;filter:invert(1);opacity:.82;}
   nav.mainnav{display:flex;gap:30px;align-items:center;}
   nav.mainnav a{font-size:13.5px;letter-spacing:.03em;position:relative;padding:4px 0;color:var(--ink);}
   nav.mainnav a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--accent);transition:width .3s ease;}
@@ -83,7 +83,7 @@
   /* ---------- hero ---------- */
   .hero{
     position:relative;min-height:100svh;display:flex;align-items:flex-end;
-    background:linear-gradient(180deg, rgba(43,33,29,.25), rgba(43,33,29,.68)), url('images/hero-bg.jpg') center/cover no-repeat;
+    background:linear-gradient(180deg, rgba(43,33,29,.35), rgba(43,33,29,.75)), url('images/hero-bg.jpg') center/cover no-repeat;
     color:#fff;
   }
   .hero-inner{width:100%;padding:0 32px 90px;max-width:var(--maxw);margin:0 auto;}
@@ -101,8 +101,10 @@
     transition:background .3s ease, color .3s ease;
   }
   .btn-primary:hover{background:transparent;color:#fff;}
-  .auth-badge{display:flex;align-items:center;gap:10px;font-size:12px;color:rgba(255,255,255,.75);}
-  .auth-badge img{height:46px;width:auto;filter:brightness(0) invert(1);opacity:.85;}
+  .auth-badge{
+    display:flex;align-items:center;gap:10px;font-size:12px;color:rgba(255,255,255,.85);
+    border:1px solid rgba(255,255,255,.4);padding:10px 18px;letter-spacing:.05em;
+  }
   .scroll-cue{position:absolute;left:32px;bottom:32px;writing-mode:vertical-rl;font-size:11px;letter-spacing:.3em;color:rgba(255,255,255,.6);display:flex;align-items:center;gap:10px;}
   .scroll-cue::after{content:'';display:block;width:1px;height:46px;background:rgba(255,255,255,.5);}
   @media(max-width:640px){.scroll-cue{display:none;}}
@@ -137,18 +139,18 @@
 
   /* ---------- strengths ---------- */
   .strength-row{
-    display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;padding:56px 0;
+    display:grid;grid-template-columns:120px 1fr;gap:36px;padding:44px 0;
   }
   .strength-row:not(:last-child){border-bottom:1px solid var(--line);}
-  .strength-row.reverse{direction:rtl;}
-  .strength-row.reverse > *{direction:ltr;}
-  .strength-media{aspect-ratio:4/3;overflow:hidden;background:var(--line);}
-  .strength-media img{width:100%;height:100%;object-fit:cover;}
-  .strength-num{font-family:var(--font-display);font-size:14px;color:var(--accent-soft);letter-spacing:.1em;}
-  .strength-text h3{font-family:var(--font-display);font-size:22px;font-weight:600;line-height:1.6;margin:14px 0 20px;}
-  .strength-text p{font-size:14px;color:var(--ink-soft);}
-  @media(max-width:800px){
-    .strength-row, .strength-row.reverse{grid-template-columns:1fr;direction:ltr;gap:26px;}
+  .strength-num{
+    font-family:var(--font-display);font-size:44px;font-weight:500;color:var(--accent-soft);
+    line-height:1;
+  }
+  .strength-text h3{font-family:var(--font-display);font-size:22px;font-weight:600;line-height:1.6;margin-bottom:16px;}
+  .strength-text p{font-size:14px;color:var(--ink-soft);max-width:62ch;}
+  @media(max-width:640px){
+    .strength-row{grid-template-columns:1fr;gap:12px;}
+    .strength-num{font-size:32px;}
   }
 
   /* ---------- flow ---------- */
@@ -231,7 +233,7 @@
   /* ---------- footer ---------- */
   footer{background:var(--ink);color:rgba(255,255,255,.7);padding:64px 0 32px;}
   footer .wrap{display:flex;flex-direction:column;align-items:center;gap:22px;text-align:center;}
-  footer img{height:30px;filter:brightness(0) invert(1);opacity:.85;}
+  footer img{height:38px;opacity:.85;}
   footer .flinks{display:flex;gap:28px;font-size:12.5px;}
   footer .flinks a:hover{color:#fff;}
   footer .copyright{font-size:11.5px;color:rgba(255,255,255,.4);margin-top:10px;}
@@ -241,7 +243,7 @@
 
 <header id="siteHeader">
   <a href="#top" class="brand">
-    <img src="images/logo.png" alt="フェリアパートナーズ ロゴ">
+    <img src="images/emblem.png" alt="フェリアパートナーズ エンブレム">
     フェリアパートナーズ
   </a>
   <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
@@ -264,7 +266,6 @@
     <div class="hero-actions reveal">
       <a href="#contact" class="btn-primary">無料カウンセリングを予約する</a>
       <div class="auth-badge">
-        <img src="images/auth-mark.png" alt="IBJ正規加盟店 認定マーク">
         <span>IBJ正規加盟店</span>
       </div>
     </div>
@@ -311,27 +312,24 @@
       </div>
 
       <div class="strength-row reveal">
-        <div class="strength-media"><img src="images/strength-01.jpg" alt="博多駅からのアクセス"></div>
+        <div class="strength-num">01</div>
         <div class="strength-text">
-          <div class="strength-num">01</div>
           <h3>博多駅に近いのでアクセス抜群<br>仕事終わりに気軽に立ち寄れます</h3>
           <p>博多駅から近く、アクセス抜群の当相談所では、仕事終わりでも立ち寄れるよう長い営業時間を設定しています。ビジネスマンや多忙な方々も気軽に訪問可能。随時相談対応で、あなたのスケジュールに合わせて柔軟に対応します。忙しい毎日の中でも、愛を見つけるチャンスを逃しません。</p>
         </div>
       </div>
 
-      <div class="strength-row reverse reveal">
-        <div class="strength-media"><img src="images/strength-02.jpg" alt="専属スタッフによるマッチング支援"></div>
+      <div class="strength-row reveal">
+        <div class="strength-num">02</div>
         <div class="strength-text">
-          <div class="strength-num">02</div>
           <h3>信頼と実績！専門スタッフによる<br>本格的なマッチング支援</h3>
           <p>経験豊富な男性スタッフが、美辞麗句を避けたリアルなアドバイスを提供します。知り合いを介した紹介では特別な値引きもあり、コストパフォーマンスも魅力的。入会後は、個性を深く理解するための性格診断からスタートし、最適なパートナー探しをサポートします。</p>
         </div>
       </div>
 
       <div class="strength-row reveal">
-        <div class="strength-media"><img src="images/strength-03.jpg" alt="オフィス面談の様子"></div>
+        <div class="strength-num">03</div>
         <div class="strength-text">
-          <div class="strength-num">03</div>
           <h3>安心のオフィス面談と<br>オーダーメイドデートプラン</h3>
           <p>当相談所は法人運営で、偽りのない透明性の高いサービスを心掛けています。オフィスでの面談により、安心して相談が可能です。また、デートに使用できるお店の紹介など、一人一人に合わせたオーダーメイドのデートプランを提供し、素敵な出会いの場を演出します。</p>
         </div>
@@ -398,7 +396,7 @@
         <h2>代表者メッセージ</h2>
       </div>
       <div class="message-block reveal">
-        <div class="message-photo"><img src="images/ceo.jpg" alt="代表 岡本大"></div>
+        <div class="message-photo"><img src="images/ceo.jpg" alt="代表" onerror="this.parentElement.style.display='none'"></div>
         <div class="message-text">
           <h3 style="font-family:var(--font-display);font-size:18px;margin-bottom:20px;">フェリアパートナーズへようこそ</h3>
           <p>結婚は人生を２倍に膨らませる旅です。人々が互いに引かれ合う「良いな」という感情から始まり、お互いを知り、好意を育み、愛情へと深めていく過程を、私たちは大切にしています。</p>
@@ -550,7 +548,7 @@
 
 <footer>
   <div class="wrap">
-    <img src="images/footer-logo.png" alt="フェリアパートナーズ">
+    <img src="images/emblem.png" alt="フェリアパートナーズ">
     <div class="flinks">
       <a href="https://harmo.co.jp/index.html#three" target="_blank" rel="noopener">運営会社</a>
       <a href="https://harmo.co.jp/privacy.html" target="_blank" rel="noopener">プライバシーポリシー</a>
