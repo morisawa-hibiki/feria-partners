@@ -3,544 +3,567 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>博多駅から徒歩5分の結婚相談所「フェリアパートナーズ」 - 結婚という人生の新たな章を始める全ての方々へ</title>
+<title>博多駅から徒歩5分の結婚相談所「フェリアパートナーズ」 - 結婚という人生の 新たな章を始める全ての方々へ</title>
 <meta name="description" content="【無料カウンセリング実施中】博多駅に近くアクセス抜群の結婚相談所です。21時までの営業で仕事帰りにも最適です。まずはお気軽にお問い合わせください。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Playfair+Display:wght@700;900&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+  /*
+    元サイト（feria-partners.jp / BlankSlateテーマ）の実CSSから抽出した実際のトークン。
+    フォントのみ、ライセンスファイルが手元にないため近い無料フォントに置き換えています：
+      RyuminPro-Medium   → Shippori Mincho（見出し・和文）
+      Didot-Bold         → Playfair Display（装飾数字・欧文ロゴ調テキスト）
+      AcuminConcept-Medium → Jost（小さな英字ラベル）
+  */
   :root{
-    --bg:#FAF5EF;
-    --surface:#FFFFFF;
-    --ink:#2B211D;
-    --ink-soft:#6B5D53;
-    --accent:#8C2F39;
-    --accent-deep:#6E1F28;
-    --accent-soft:#C9A227;
-    --line:#E4D9C8;
-    --font-display:'Shippori Mincho', serif;
-    --font-body:'Zen Kaku Gothic New', sans-serif;
-    --maxw:1120px;
+    --brown:#4e280b;
+    --coral:#ffa88b;
+    --cream:#faf7f2;
+    --teal:#68ceca;
+    --magenta:#d4145a;
+    --gray:#666;
+    --border:#e0e0e0;
+    --link:#3333B1;
+    --font-mincho:'Shippori Mincho', serif;
+    --font-didot:'Playfair Display', serif;
+    --font-en:'Jost', sans-serif;
+    --font-body:"游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
   }
-  *{margin:0;padding:0;box-sizing:border-box;}
+  *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
-    font-family:var(--font-body);
-    color:var(--ink);
-    background:var(--bg);
-    line-height:1.9;
-    font-weight:400;
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
+    margin:0;font-family:var(--font-body);font-weight:500;color:#000;line-height:1.4;background:#fff;
   }
-  img{max-width:100%;display:block;}
-  a{color:inherit;text-decoration:none;}
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px;}
-  @media(max-width:640px){.wrap{padding:0 20px;}}
+  h1,h2,h3,h4,figure{margin:0;}
+  ul{list-style:none;margin:0;padding:0;}
+  p{margin:0;}
+  a{text-decoration:none;color:inherit;}
+  img{width:100%;height:auto;display:block;}
+  .wrap{max-width:1200px;width:95%;margin:auto;}
 
-  /* ---------- header ---------- */
-  header{
-    position:fixed;top:0;left:0;right:0;z-index:100;
-    display:flex;align-items:center;justify-content:space-between;
-    padding:22px 32px;
-    transition:background .4s ease, padding .4s ease, box-shadow .4s ease;
+  /* ---------- hamburger + drawer nav ---------- */
+  .sp-menu{
+    width:72px;height:72px;background:var(--brown);position:fixed;top:0;right:0;z-index:50;cursor:pointer;
   }
-  header.solid{
-    background:rgba(250,245,239,.94);
-    backdrop-filter:blur(8px);
-    padding:14px 32px;
-    box-shadow:0 1px 0 var(--line);
+  .sp-menu span{
+    width:30px;height:0;border-bottom:1px solid #fff;position:absolute;left:50%;top:29px;
+    transition:.3s;transform:translateX(-50%);
   }
-  .brand{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-size:19px;letter-spacing:.04em;color:var(--ink);}
-  .brand img{height:36px;width:auto;filter:invert(1);opacity:.82;}
-  nav.mainnav{display:flex;gap:30px;align-items:center;}
-  nav.mainnav a{font-size:13.5px;letter-spacing:.03em;position:relative;padding:4px 0;color:var(--ink);}
-  nav.mainnav a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--accent);transition:width .3s ease;}
-  nav.mainnav a:hover::after{width:100%;}
-  .nav-cta{
-    background:var(--accent);color:#fff !important;padding:9px 20px;border-radius:2px;font-size:13px;letter-spacing:.05em;
-    transition:background .3s ease;
+  .sp-menu span+span{top:36px;}
+  .sp-menu span+span+span{top:43px;}
+  .sp-menu.open span:nth-child(1){top:36px;transform:translateX(-50%) rotate(45deg);}
+  .sp-menu.open span:nth-child(2){width:0;}
+  .sp-menu.open span:nth-child(3){top:36px;transform:translateX(-50%) rotate(-45deg);}
+
+  .nav-menu{
+    width:400px;max-width:88vw;height:100svh;background:var(--brown);position:fixed;top:0;right:0;z-index:49;
+    padding:110px 36px 0;transition:.5s;transform:translateX(100%);
   }
-  .nav-cta:hover{background:var(--accent-deep);}
-  .nav-cta::after{display:none;}
-  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:110;}
-  .hamburger span{width:26px;height:1.5px;background:var(--ink);transition:.3s;}
-  @media(max-width:900px){
-    nav.mainnav{
-      position:fixed;top:0;right:0;height:100vh;width:min(78vw,340px);
-      background:var(--surface);flex-direction:column;justify-content:center;align-items:flex-start;
-      padding:0 44px;gap:26px;
-      transform:translateX(100%);transition:transform .4s ease;
-      box-shadow:-6px 0 30px rgba(0,0,0,.08);
-    }
-    nav.mainnav.open{transform:translateX(0);}
-    .hamburger{display:flex;}
-    .hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
-    .hamburger.open span:nth-child(2){opacity:0;}
-    .hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+  .nav-menu.open{transform:translateX(0);}
+  .nav-menu ul li{border-bottom:1px solid #fff;}
+  .nav-menu ul li a{padding:18px 0;display:flex;align-items:center;transition:.3s;}
+  .nav-menu ul li a:hover{opacity:.7;}
+  .nav-menu ul li a .en{font-family:var(--font-didot);font-weight:700;font-size:22px;margin-right:18px;line-height:1;color:#fff;}
+  .nav-menu ul li a .ja{font-family:var(--font-mincho);font-size:12px;line-height:1;color:#fff;}
+
+  /* ---------- floating CTA ---------- */
+  .free-promise{
+    width:120px;position:fixed;z-index:40;right:5%;bottom:30px;transition:.3s;border-radius:50%;
+    box-shadow:0 6px 18px rgba(0,0,0,.2);
   }
+  .free-promise:hover{opacity:.85;}
 
   /* ---------- hero ---------- */
-  .hero{
-    position:relative;min-height:100svh;display:flex;align-items:flex-end;
-    background:linear-gradient(180deg, rgba(43,33,29,.35), rgba(43,33,29,.75)), url('images/hero-bg.jpg') center/cover no-repeat;
-    color:#fff;
+  .frontview{width:100%;position:relative;height:100vh;min-height:560px;overflow:hidden;}
+  .frontview > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .frontview .head__txt{
+    font-weight:bold;font-size:12px;line-height:21px;color:#fff;position:absolute;top:24px;left:24px;
+    max-width:70%;text-shadow:0 1px 4px rgba(0,0,0,.4);
   }
-  .hero-inner{width:100%;padding:0 32px 90px;max-width:var(--maxw);margin:0 auto;}
-  .hero-eyebrow{font-size:12.5px;letter-spacing:.28em;color:var(--accent-soft);margin-bottom:22px;}
-  .hero h1{
-    font-family:var(--font-display);font-weight:600;
-    font-size:clamp(30px,5.2vw,54px);line-height:1.55;letter-spacing:.03em;
-    max-width:14ch;
+  .frontview .catch__wrapper{
+    width:86%;max-width:900px;position:absolute;left:50%;transform:translateX(-50%);bottom:60px;
   }
-  .hero p.sub{margin-top:22px;font-size:14px;color:rgba(255,255,255,.78);max-width:46ch;letter-spacing:.02em;}
-  .hero-actions{margin-top:38px;display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
-  .btn-primary{
-    display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:#fff;
-    padding:16px 30px;font-size:14px;letter-spacing:.06em;border-radius:2px;border:1px solid var(--accent);
-    transition:background .3s ease, color .3s ease;
+  .frontview .catch__wrapper h2{
+    font-family:var(--font-mincho);font-weight:600;font-size:clamp(24px,4.2vw,45px);letter-spacing:.03em;
+    line-height:1.5;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.35);
   }
-  .btn-primary:hover{background:transparent;color:#fff;}
-  .auth-badge{
-    display:flex;align-items:center;gap:10px;font-size:12px;color:rgba(255,255,255,.85);
-    border:1px solid rgba(255,255,255,.4);padding:10px 18px;letter-spacing:.05em;
-  }
-  .scroll-cue{position:absolute;left:32px;bottom:32px;writing-mode:vertical-rl;font-size:11px;letter-spacing:.3em;color:rgba(255,255,255,.6);display:flex;align-items:center;gap:10px;}
-  .scroll-cue::after{content:'';display:block;width:1px;height:46px;background:rgba(255,255,255,.5);}
-  @media(max-width:640px){.scroll-cue{display:none;}}
+  .frontview .auth__mark{width:280px;max-width:60%;margin-top:34px;filter:drop-shadow(0 4px 12px rgba(0,0,0,.3));}
 
-  /* ---------- generic section ---------- */
-  section{padding:120px 0;position:relative;}
-  @media(max-width:640px){section{padding:80px 0;}}
-  .sec-head{margin-bottom:64px;}
-  .sec-head .kicker{font-size:12px;letter-spacing:.22em;color:var(--accent);font-weight:500;}
-  .sec-head h2{
-    font-family:var(--font-display);font-weight:600;
-    font-size:clamp(24px,3vw,34px);letter-spacing:.03em;margin-top:14px;color:var(--ink);
+  /* ---------- detail view (coral band) ---------- */
+  .detail__view{width:100%;padding:90px 0;background:var(--coral);position:relative;overflow:hidden;}
+  .detail__view .scroll-infinity{position:absolute;left:0;top:50%;transform:translateY(-50%);white-space:nowrap;pointer-events:none;}
+  .detail__view .scroll-infinity__list{display:flex;animation:scrollLeft 38s linear infinite;}
+  .detail__view .scroll-infinity__text{
+    font-family:var(--font-didot);font-weight:900;font-size:min(18vw,220px);line-height:1;color:#fff;opacity:.2;
+    padding-right:.3em;
   }
-  .sec-head p.lead{margin-top:16px;color:var(--ink-soft);font-size:14.5px;max-width:52ch;}
-  .rule{height:1px;background:var(--line);border:none;}
+  @keyframes scrollLeft{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+  .detail__view .view__text{max-width:1200px;width:95%;margin:auto;display:flex;align-items:center;gap:60px;position:relative;z-index:1;flex-wrap:wrap;}
+  .detail__view .view__text .logo{width:260px;max-width:60%;}
+  .detail__view .view__text .d__txt{
+    font-family:var(--font-mincho);font-weight:500;font-size:clamp(20px,2.6vw,32px);letter-spacing:.03em;
+    line-height:1.6;color:var(--brown);flex:1;min-width:240px;
+  }
 
-  /* reveal */
-  .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1);}
-  .reveal.in{opacity:1;transform:none;}
+  /* ---------- section title ---------- */
+  .title__wrapper .en{font-family:var(--font-didot);font-weight:900;font-size:clamp(48px,7vw,90px);line-height:1;color:var(--brown);}
+  .title__wrapper .ja{font-family:var(--font-mincho);font-size:clamp(18px,2vw,24px);line-height:1;margin-top:6px;color:var(--brown);}
 
   /* ---------- news ---------- */
-  .news-list{border-top:1px solid var(--line);}
-  .news-item{
-    display:flex;gap:26px;align-items:baseline;padding:22px 0;border-bottom:1px solid var(--line);
-    font-size:14px;
-  }
-  .news-item .date{color:var(--ink-soft);font-variant-numeric:tabular-nums;min-width:110px;}
-  .news-item .tag{color:var(--accent);font-size:12px;letter-spacing:.05em;min-width:64px;}
-  .news-item a{flex:1;transition:opacity .25s ease;}
-  .news-item a:hover{opacity:.6;}
-  .news-more{display:inline-block;margin-top:28px;font-size:13px;letter-spacing:.05em;border-bottom:1px solid var(--ink);}
+  .news__wrapper{padding:110px 0 120px;overflow:hidden;position:relative;}
+  .news__wrapper .f__mark{width:420px;max-width:45vw;position:absolute;top:40px;right:-120px;z-index:-1;opacity:.6;}
+  .news__wrapper .content__inner{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:40px;}
+  .news__wrapper .news__content{flex:1;min-width:280px;}
+  .news-content__inner{margin-top:50px;}
+  .news-content__inner table{width:100%;border-collapse:collapse;}
+  .news-content__inner tr{border-bottom:1px solid var(--gray);display:flex;flex-wrap:wrap;}
+  .news-content__inner td{font-size:14px;letter-spacing:.14em;line-height:1.6;padding:18px 0;color:var(--gray);}
+  .news-content__inner td:first-child{width:220px;display:flex;align-items:center;}
+  .news-content__inner td:first-child span{color:var(--coral);margin-left:30px;}
+  .news-content__inner td a{color:var(--gray);transition:.3s;}
+  .news-content__inner td a:hover{color:var(--coral);}
+  .viewmore__btn{width:220px;margin-top:40px;padding-top:14px;border-top:1px solid var(--brown);display:flex;align-items:center;justify-content:space-between;}
+  .viewmore__btn .lbl{font-family:var(--font-en);font-size:13px;letter-spacing:.16em;color:var(--brown);}
+  .viewmore__btn .icon{width:30px;transition:.3s;}
+  .viewmore__btn:hover .icon{transform:translateX(8px);}
 
   /* ---------- strengths ---------- */
-  .strength-row{
-    display:grid;grid-template-columns:120px 1fr;gap:36px;padding:44px 0;
+  .strength__wrapper{
+    background:linear-gradient(to bottom right, rgba(255,122,171,.2) 0%, rgba(71,219,170,.2) 55%, rgba(0,124,173,.2) 100%);
+    padding:50px 0 130px;text-align:center;
   }
-  .strength-row:not(:last-child){border-bottom:1px solid var(--line);}
-  .strength-num{
-    font-family:var(--font-display);font-size:44px;font-weight:500;color:var(--accent-soft);
-    line-height:1;
+  .strength__wrapper .content__items{margin-top:80px;}
+  .c__item{margin-bottom:90px;display:flex;justify-content:space-between;align-items:flex-start;gap:30px;flex-wrap:wrap;text-align:left;}
+  .c__item:last-child{margin-bottom:0;}
+  .c__item .image__wrapper{width:340px;height:255px;max-width:100%;border-radius:15px;overflow:hidden;flex-shrink:0;}
+  .c__item .image__wrapper img{width:100%;height:100%;object-fit:cover;}
+  .c__item .content__text{flex:1;min-width:260px;}
+  .c__item .title__text{padding-left:min(160px,20vw);position:relative;}
+  .c__item .num{
+    font-family:var(--font-didot);font-weight:900;font-size:clamp(64px,8vw,110px);line-height:1;color:var(--coral);
+    position:absolute;left:0;top:-22px;
   }
-  .strength-text h3{font-family:var(--font-display);font-size:22px;font-weight:600;line-height:1.6;margin-bottom:16px;}
-  .strength-text p{font-size:14px;color:var(--ink-soft);max-width:62ch;}
-  @media(max-width:640px){
-    .strength-row{grid-template-columns:1fr;gap:12px;}
-    .strength-num{font-size:32px;}
+  .c__item .b__line{width:50px;position:absolute;left:88px;top:6px;}
+  .c__item .t__txt{font-family:var(--font-en);font-size:15px;letter-spacing:.4em;color:var(--coral);}
+  .c__item .c__txt{font-family:var(--font-mincho);font-size:18px;letter-spacing:.03em;line-height:1.6;margin-top:12px;color:var(--gray);}
+  .c__item .d__txt{font-weight:bold;font-size:14px;line-height:1.9;margin-top:24px;color:var(--gray);}
+  @media(max-width:760px){
+    .c__item .title__text{padding-left:96px;}
   }
 
   /* ---------- flow ---------- */
-  .flow-timeline{border-left:1px solid var(--line);margin-left:26px;}
-  .flow-step{position:relative;padding:0 0 56px 46px;}
-  .flow-step:last-child{padding-bottom:0;}
-  .flow-step .dot{
-    position:absolute;left:-27px;top:-2px;width:52px;height:52px;border-radius:50%;
-    background:var(--surface);border:1px solid var(--accent);color:var(--accent);
-    display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:17px;
+  .flow__wrapper{padding:110px 0 130px;}
+  .flow__wrapper .content__inner{display:flex;justify-content:space-between;gap:50px;flex-wrap:wrap;}
+  .flow__wrapper .title__inner{flex:1;min-width:220px;}
+  .flow__wrapper .t-detail{font-weight:bold;font-size:14px;line-height:1.9;margin-top:30px;color:var(--gray);max-width:32ch;}
+  .flow__items{width:560px;max-width:100%;}
+  .f__item{
+    width:100%;min-height:100px;border-radius:20px;border:3px solid var(--coral);overflow:hidden;
+    display:flex;align-items:center;margin-bottom:0;
   }
-  .flow-step h3{font-family:var(--font-display);font-size:19px;font-weight:600;padding-top:10px;}
-  .flow-step p{font-size:13.5px;color:var(--ink-soft);margin-top:8px;max-width:48ch;}
+  .f__item .lbl__text{
+    width:190px;flex-shrink:0;height:100%;display:flex;align-items:center;gap:16px;padding-left:24px;
+    background:var(--brown);align-self:stretch;
+  }
+  .f__item .lbl__text .num{font-family:var(--font-didot);font-weight:900;font-size:48px;line-height:1;color:#fff;}
+  .f__item .lbl__text .icon{width:38px;}
+  .f__item .c__text{font-family:var(--font-mincho);font-size:16px;letter-spacing:.03em;line-height:1.6;padding:16px 20px;color:var(--gray);}
+  .down-arrow{width:22px;height:26px;object-fit:contain;display:block;margin:6px auto;}
 
   /* ---------- price ---------- */
-  .price-card{
-    background:var(--surface);border:1px solid var(--line);max-width:560px;margin:0 auto;
-    padding:52px 48px;text-align:center;
+  .price__wrapper{background:var(--cream);padding:60px 0 130px;}
+  .price__wrapper .title__inner{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;}
+  .price__wrapper .d__txt{font-weight:bold;font-size:14px;line-height:1.9;color:var(--gray);max-width:34ch;}
+  .price__items{margin-top:70px;display:flex;justify-content:center;}
+  .p__item{width:100%;max-width:420px;border-radius:20px;overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,.06);}
+  .p__item .p__lbl{
+    background:var(--coral);font-family:var(--font-mincho);font-weight:500;font-size:20px;letter-spacing:.03em;
+    padding:26px 0;text-align:center;color:#fff;
   }
-  .price-card .plan-name{font-family:var(--font-display);font-size:22px;letter-spacing:.05em;color:var(--accent);margin-bottom:34px;}
-  .price-table{width:100%;border-collapse:collapse;text-align:left;}
-  .price-table tr{border-bottom:1px solid var(--line);}
-  .price-table tr:last-child{border-bottom:none;}
-  .price-table th{font-weight:500;padding:16px 0;color:var(--ink-soft);font-size:13.5px;width:50%;}
-  .price-table td{padding:16px 0;text-align:right;font-family:var(--font-display);font-size:19px;}
-  .price-notes{margin-top:34px;text-align:left;font-size:12px;color:var(--ink-soft);line-height:2;}
-  .price-notes li{margin-left:1.2em;}
+  .p__item table{width:100%;border-collapse:collapse;}
+  .p__item table tr:nth-child(2n) td{background:#efefef;}
+  .p__item table tr td{font-weight:bold;font-size:14px;padding:22px 0 22px 28px;text-align:left;color:var(--gray);background:#fff;}
+  .p__item table tr td:last-child{font-size:26px;text-align:center;padding-left:0;color:var(--gray);}
+  .p__item table tr td:last-child span{font-size:13px;}
+  .p__item table tr.red td:last-child{color:var(--magenta);}
+  ul.price-notes{margin-top:2em;font-size:12px;line-height:1.9;color:var(--gray);}
+  ul.price-notes li{margin-left:1.2em;}
 
   /* ---------- message ---------- */
-  .message-block{display:grid;grid-template-columns:220px 1fr;gap:64px;align-items:start;}
-  .message-photo{aspect-ratio:1;overflow:hidden;background:var(--line);}
-  .message-photo img{width:100%;height:100%;object-fit:cover;}
-  .message-text p{font-size:14.5px;margin-bottom:1.4em;color:var(--ink-soft);}
-  .message-sign{margin-top:26px;font-family:var(--font-display);font-size:15px;color:var(--ink);}
-  @media(max-width:700px){.message-block{grid-template-columns:1fr;}.message-photo{width:140px;}}
+  .message__wrapper{padding:50px 0 130px;background:var(--coral);position:relative;overflow:hidden;}
+  .message__wrapper .ceo__image{
+    width:34%;min-width:220px;position:absolute;left:0;bottom:0;border-top-right-radius:80px;overflow:hidden;
+    background:rgba(255,255,255,.15);
+    display:flex;align-items:flex-end;justify-content:center;min-height:260px;
+  }
+  .message__wrapper .ceo__image.empty::after{
+    content:'代表写真';color:rgba(255,255,255,.85);font-family:var(--font-mincho);font-size:14px;
+    padding-bottom:40px;
+  }
+  .message__wrapper .content__inner{display:flex;justify-content:flex-end;}
+  .message__wrapper .content__text{width:620px;max-width:100%;}
+  .message__wrapper .lbl__txt{font-family:var(--font-mincho);font-weight:500;font-size:clamp(22px,3vw,30px);line-height:1.7;color:var(--brown);}
+  .message__wrapper .c__txt{font-weight:bold;font-size:14px;line-height:1.9;margin-top:30px;color:var(--brown);}
+  .message__wrapper .c__txt+.c__txt{margin-top:1.4em;}
+  .message__wrapper .name__txt{font-weight:bold;font-size:14px;line-height:1.9;margin-top:40px;text-align:right;color:var(--brown);}
+  @media(max-width:760px){
+    .message__wrapper .ceo__image{position:relative;width:70%;margin:0 auto 40px;}
+    .message__wrapper .content__inner{justify-content:center;}
+  }
 
   /* ---------- access ---------- */
-  .access-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:56px;}
-  .access-info dl{font-size:14px;}
-  .access-info dt{color:var(--ink-soft);font-size:12px;margin-top:18px;}
-  .access-info dt:first-child{margin-top:0;}
-  .access-info dd{margin-top:4px;}
-  .social-links{display:flex;gap:16px;margin-top:26px;}
-  .social-links a{
-    width:40px;height:40px;border:1px solid var(--line);border-radius:50%;
-    display:flex;align-items:center;justify-content:center;transition:border-color .3s ease, color .3s ease;color:var(--ink);
-  }
-  .social-links a:hover{border-color:var(--accent);color:var(--accent);}
-  .map-embed{width:100%;height:100%;min-height:320px;border:1px solid var(--line);}
-  .map-embed iframe{width:100%;height:100%;min-height:320px;border:0;filter:grayscale(.2) contrast(1.02);}
-  @media(max-width:800px){.access-grid{grid-template-columns:1fr;}}
+  .access__wrapper .map__inner{width:100%;height:340px;}
+  .access__wrapper .map__inner iframe{filter:grayscale(1);width:100%;height:100%;border:0;}
+  .access__wrapper .content__inner{max-width:900px;width:95%;margin:auto;padding:90px 0;display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;}
+  .access__wrapper .t__txt{font-weight:bold;font-size:14px;line-height:1.9;margin-top:26px;color:var(--gray);}
+  .access__wrapper .info__inner .c__txt{font-weight:bold;font-size:14px;line-height:1.9;color:var(--gray);}
+  .access__wrapper .info__inner .c__txt a{color:var(--gray);}
+  .sns__items{margin-top:34px;display:flex;}
+  .sns__items a{width:38px;display:block;margin:0 8px;transition:.3s;}
+  .sns__items a:hover{opacity:.7;}
 
   /* ---------- contact ---------- */
-  .contact-note{font-size:12.5px;color:var(--ink-soft);margin-bottom:40px;line-height:2;}
-  form.inquiry{display:grid;gap:22px;}
-  .field label{display:block;font-size:13px;color:var(--ink-soft);margin-bottom:8px;}
-  .field label .req{color:var(--accent);margin-left:6px;font-size:11px;}
-  .field input[type=text],
-  .field input[type=email],
-  .field input[type=tel],
-  .field select,
-  .field textarea{
-    width:100%;border:1px solid var(--line);background:var(--surface);
-    padding:13px 14px;font-family:var(--font-body);font-size:14px;color:var(--ink);
+  .contact__wrapper{background:var(--cream);padding:60px 0 130px;}
+  .contact__wrapper .lbl__txt{font-family:var(--font-mincho);font-weight:500;font-size:clamp(24px,3vw,30px);text-align:center;color:var(--brown);}
+  .contact__wrapper .content__inner{max-width:900px;width:95%;margin:60px auto 0;}
+  .cf-row{display:flex;flex-wrap:wrap;padding:14px 0;border-bottom:1px solid transparent;}
+  .cf-row .cf-label{width:220px;flex-shrink:0;padding-right:15px;display:flex;align-items:center;font-weight:bold;font-size:14px;color:var(--gray);}
+  .cf-row .cf-label .required{color:var(--magenta);margin-left:8px;font-size:12px;}
+  .cf-row .cf-field{flex:1;min-width:220px;}
+  input[type=text], input[type=email], input[type=tel], select, textarea{
+    font-family:var(--font-body);width:100%;height:52px;border-radius:6px;background:#fff;border:1px solid var(--border);
+    font-weight:bold;font-size:14px;padding-left:18px;color:#333;
   }
-  .field textarea{min-height:110px;resize:vertical;}
-  .radio-group{display:flex;gap:24px;}
-  .radio-group label{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--ink);}
-  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
-  @media(max-width:640px){.field-row{grid-template-columns:1fr;}}
-  .privacy-note{font-size:11.5px;color:var(--ink-soft);margin-top:6px;line-height:1.9;}
-  .privacy-note a{border-bottom:1px solid var(--ink-soft);}
+  input.age{width:140px;}
+  textarea{height:150px;padding:16px 18px;resize:vertical;}
+  .radio-group{display:flex;flex-wrap:wrap;height:52px;align-items:center;}
+  .radio-group label{margin-right:22px;display:flex;align-items:center;cursor:pointer;}
+  .radio-group input[type=radio]{width:20px;height:20px;margin:0 8px 0 0;border:1px solid var(--border);width:auto;}
+  .select-wrap{position:relative;max-width:280px;}
+  .select-wrap select{appearance:none;cursor:pointer;}
+  .select-wrap::after{
+    content:'';position:absolute;right:20px;top:50%;transform:translateY(-50%);
+    width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:6px solid var(--gray);
+    pointer-events:none;
+  }
+  .privacy-box{max-width:734px;margin:50px auto 0;padding:26px 20px;background:#fff;text-align:center;}
+  .privacy-box p{font-size:13px;line-height:1.9;color:var(--gray);}
+  .privacy-box a{color:var(--link);text-decoration:underline;}
   .submit-btn{
-    justify-self:start;margin-top:10px;background:var(--accent);color:#fff;border:none;
-    padding:16px 40px;font-size:14px;letter-spacing:.08em;cursor:pointer;transition:background .3s ease;
-    font-family:var(--font-body);
+    width:260px;height:60px;margin:50px auto 0;border-radius:4px;background:var(--coral);display:flex;
+    align-items:center;justify-content:center;font-weight:bold;font-size:14px;color:#fff;transition:.3s;cursor:pointer;border:none;
   }
-  .submit-btn:hover{background:var(--accent-deep);}
+  .submit-btn:hover{opacity:.75;}
 
   /* ---------- footer ---------- */
-  footer{background:var(--ink);color:rgba(255,255,255,.7);padding:64px 0 32px;}
-  footer .wrap{display:flex;flex-direction:column;align-items:center;gap:22px;text-align:center;}
-  footer img{height:38px;opacity:.85;}
-  footer .flinks{display:flex;gap:28px;font-size:12.5px;}
-  footer .flinks a:hover{color:#fff;}
-  footer .copyright{font-size:11.5px;color:rgba(255,255,255,.4);margin-top:10px;}
+  footer{padding:40px 0;background:var(--brown);text-align:center;}
+  footer .f__logo{width:130px;margin:0 auto;transition:.3s;}
+  footer .f__logo:hover{opacity:.7;}
+  footer ul{margin-top:26px;display:flex;justify-content:center;align-items:center;flex-wrap:wrap;}
+  footer ul li{padding:0 20px;}
+  footer ul li a{font-size:12px;text-decoration:underline;color:#fff;}
+  footer ul li span{font-size:12px;color:#fff;}
+
+  @media(max-width:900px){
+    .c__item{display:block;}
+    .c__item .image__wrapper{width:100%;margin-bottom:24px;}
+    .c__item .content__text{margin-top:0;}
+  }
 </style>
 </head>
 <body>
 
-<header id="siteHeader">
-  <a href="#top" class="brand">
-    <img src="images/emblem.png" alt="フェリアパートナーズ エンブレム">
-    フェリアパートナーズ
-  </a>
-  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
-  <nav class="mainnav" id="mainNav">
-    <a href="https://feria-partners.jp/news" data-nav>News</a>
-    <a href="#strength" data-nav>Our Strengths</a>
-    <a href="#flow" data-nav>Flow</a>
-    <a href="#price" data-nav>Price</a>
-    <a href="#message" data-nav>Message</a>
-    <a href="#access" data-nav>Access</a>
-    <a href="#contact" class="nav-cta" data-nav>無料カウンセリング</a>
-  </nav>
-</header>
+<div class="sp-menu" id="spMenu"><span></span><span></span><span></span></div>
+<nav class="nav-menu" id="navMenu">
+  <ul>
+    <li><a href="https://feria-partners.jp/news" data-nav><span class="en">NEWS</span><span class="ja">お知らせ</span></a></li>
+    <li><a href="#strength" data-nav><span class="en">STRENGTH</span><span class="ja">強み</span></a></li>
+    <li><a href="#flow" data-nav><span class="en">FLOW</span><span class="ja">ご成婚までの流れ</span></a></li>
+    <li><a href="#price" data-nav><span class="en">PRICE</span><span class="ja">料金プラン</span></a></li>
+    <li><a href="#message" data-nav><span class="en">MESSAGE</span><span class="ja">代表挨拶</span></a></li>
+    <li><a href="#access" data-nav><span class="en">ACCESS</span><span class="ja">アクセス</span></a></li>
+    <li><a href="#contact" data-nav><span class="en">CONTACT</span><span class="ja">お問い合わせ</span></a></li>
+  </ul>
+</nav>
 
-<div id="top" class="hero">
-  <div class="hero-inner">
-    <div class="hero-eyebrow">FERIA PARTNERS</div>
-    <h1 class="reveal">結婚という人生の、<br>新たな章を始める<br>全ての方々へ</h1>
-    <p class="sub reveal">博多駅から徒歩5分。仕事帰りにも立ち寄れる結婚相談所として、<br>おひとりおひとりの歩幅に合わせた婚活をサポートします。</p>
-    <div class="hero-actions reveal">
-      <a href="#contact" class="btn-primary">無料カウンセリングを予約する</a>
-      <div class="auth-badge">
-        <span>IBJ正規加盟店</span>
-      </div>
+<a href="#contact" class="free-promise"><img src="images/free_promise.png" alt="無料カウンセリング予約はこちらから"></a>
+
+<div class="frontview" id="top">
+  <img src="images/frontview.jpg" alt="">
+  <div class="head__txt">博多駅から徒歩5分の結婚相談所「フェリアパートナーズ」</div>
+  <div class="catch__wrapper">
+    <h2>結婚という人生の<br>新たな章を始める<br>全ての方々へ</h2>
+    <img class="auth__mark" src="images/auth_mark.png" alt="成婚数No.1のIBJ正規加盟店">
+  </div>
+</div>
+
+<div class="detail__view">
+  <div class="scroll-infinity">
+    <div class="scroll-infinity__list">
+      <span class="scroll-infinity__text">FERIA PARTNERS &nbsp;FERIA PARTNERS &nbsp;FERIA PARTNERS &nbsp;</span>
+      <span class="scroll-infinity__text">FERIA PARTNERS &nbsp;FERIA PARTNERS &nbsp;FERIA PARTNERS &nbsp;</span>
     </div>
   </div>
-  <div class="scroll-cue">SCROLL</div>
+  <div class="view__text">
+    <img class="logo" src="images/logo.png" alt="フェリアパートナーズ ロゴ">
+    <p class="d__txt">結婚という人生の、新たな章を<br>共に歩むパートナーとして。</p>
+  </div>
 </div>
 
 <main>
 
-  <section id="news">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <div class="kicker">NEWS</div>
-        <h2>お知らせ</h2>
-      </div>
-      <div class="news-list reveal">
-        <div class="news-item">
-          <span class="date">2025.04.20</span>
-          <span class="tag">ブログ</span>
-          <a href="https://feria-partners.jp/フラれて立ち直れない方の特徴/">フラれて立ち直れない方の特徴</a>
-        </div>
-        <div class="news-item">
-          <span class="date">2025.04.13</span>
-          <span class="tag">ブログ</span>
-          <a href="https://feria-partners.jp/交際が長続きしない方の特徴/">交際が長続きしない方の特徴</a>
-        </div>
-        <div class="news-item">
-          <span class="date">2025.04.07</span>
-          <span class="tag">ブログ</span>
-          <a href="https://feria-partners.jp/交際が長続きする方の特徴/">交際が長続きする方の特徴</a>
+  <section class="news__wrapper" id="news">
+    <img class="f__mark" src="images/f_mark.png" alt="">
+    <div class="content__inner wrap">
+      <div class="title__inner">
+        <div class="title__wrapper">
+          <div class="en">NEWS</div>
+          <div class="ja">お知らせ</div>
         </div>
       </div>
-      <a href="https://feria-partners.jp/news" class="news-more reveal">VIEW MORE</a>
-    </div>
-  </section>
-
-  <hr class="rule wrap">
-
-  <section id="strength">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <div class="kicker">OUR STRENGTHS</div>
-        <h2>フェリアパートナーズの強み</h2>
-      </div>
-
-      <div class="strength-row reveal">
-        <div class="strength-num">01</div>
-        <div class="strength-text">
-          <h3>博多駅に近いのでアクセス抜群<br>仕事終わりに気軽に立ち寄れます</h3>
-          <p>博多駅から近く、アクセス抜群の当相談所では、仕事終わりでも立ち寄れるよう長い営業時間を設定しています。ビジネスマンや多忙な方々も気軽に訪問可能。随時相談対応で、あなたのスケジュールに合わせて柔軟に対応します。忙しい毎日の中でも、愛を見つけるチャンスを逃しません。</p>
+      <div class="news__content">
+        <div class="news-content__inner">
+          <table>
+            <tr><td>2025.04.20 <span>ブログ</span></td><td><a href="https://feria-partners.jp/フラれて立ち直れない方の特徴/">フラれて立ち直れない方の特徴</a></td></tr>
+            <tr><td>2025.04.13 <span>ブログ</span></td><td><a href="https://feria-partners.jp/交際が長続きしない方の特徴/">交際が長続きしない方の特徴</a></td></tr>
+            <tr><td>2025.04.07 <span>ブログ</span></td><td><a href="https://feria-partners.jp/交際が長続きする方の特徴/">交際が長続きする方の特徴</a></td></tr>
+          </table>
         </div>
-      </div>
-
-      <div class="strength-row reveal">
-        <div class="strength-num">02</div>
-        <div class="strength-text">
-          <h3>信頼と実績！専門スタッフによる<br>本格的なマッチング支援</h3>
-          <p>経験豊富な男性スタッフが、美辞麗句を避けたリアルなアドバイスを提供します。知り合いを介した紹介では特別な値引きもあり、コストパフォーマンスも魅力的。入会後は、個性を深く理解するための性格診断からスタートし、最適なパートナー探しをサポートします。</p>
-        </div>
-      </div>
-
-      <div class="strength-row reveal">
-        <div class="strength-num">03</div>
-        <div class="strength-text">
-          <h3>安心のオフィス面談と<br>オーダーメイドデートプラン</h3>
-          <p>当相談所は法人運営で、偽りのない透明性の高いサービスを心掛けています。オフィスでの面談により、安心して相談が可能です。また、デートに使用できるお店の紹介など、一人一人に合わせたオーダーメイドのデートプランを提供し、素敵な出会いの場を演出します。</p>
-        </div>
+        <a href="https://feria-partners.jp/news" class="viewmore__btn">
+          <span class="lbl">VIEW MORE</span>
+          <img class="icon" src="images/arrow.png" alt="">
+        </a>
       </div>
     </div>
   </section>
 
-  <hr class="rule wrap">
-
-  <section id="flow">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <div class="kicker">FLOW</div>
-        <h2>ご結婚までの流れ</h2>
-        <p class="lead">ご入会前の無料カウンセリングから成婚退会まで、親身にサポートさせていただきます。</p>
-      </div>
-      <div class="flow-timeline reveal">
-        <div class="flow-step"><div class="dot">1</div><h3>無料カウンセリング</h3><p>まずはお気軽にご相談ください。ご希望やお悩みを丁寧に伺います。</p></div>
-        <div class="flow-step"><div class="dot">2</div><h3>ご入会手続き</h3><p>ご納得いただいた上で、ご入会のお手続きを進めます。</p></div>
-        <div class="flow-step"><div class="dot">3</div><h3>プロフィール作成</h3><p>性格診断や面談をもとに、あなたらしさが伝わるプロフィールを作成します。</p></div>
-        <div class="flow-step"><div class="dot">4</div><h3>活動開始</h3><p>お相手探しの活動をスタート。専属スタッフが並走します。</p></div>
-        <div class="flow-step"><div class="dot">5</div><h3>お見合い</h3><p>ご縁のある方とオフィスにてお見合いを行います。</p></div>
-        <div class="flow-step"><div class="dot">6</div><h3>仮交際スタート〜真剣交際</h3><p>お互いを知る期間を経て、真剣交際へと進みます。</p></div>
-        <div class="flow-step"><div class="dot">7</div><h3>プロポーズ・成婚退会</h3><p>晴れてご成婚。新たな人生の章の始まりです。</p></div>
-      </div>
+  <section class="strength__wrapper" id="strength">
+    <div class="title__wrapper wrap">
+      <div class="en">STRENGTH</div>
+      <div class="ja">フェリアパートナーズの強み</div>
     </div>
-  </section>
+    <div class="content__items wrap">
 
-  <hr class="rule wrap">
-
-  <section id="price">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <div class="kicker">PRICE</div>
-        <h2>プラン料金</h2>
-        <p class="lead">当相談所では分かりやすいプランをご用意しています。</p>
-      </div>
-      <div class="price-card reveal">
-        <div class="plan-name">レギュラープラン</div>
-        <table class="price-table">
-          <tr><th>初期費用※1</th><td>55,000円</td></tr>
-          <tr><th>月会費</th><td>11,000円</td></tr>
-          <tr><th>お見合料</th><td>0円</td></tr>
-          <tr><th>ご成婚料</th><td>55,000円</td></tr>
-        </table>
-        <ul class="price-notes">
-          <li>※初期費用には入会金、登録料、活動サポート費が含まれています。</li>
-          <li>※サービスクオリティ維持の為、会員人数の上限を30名とさせていただきます。</li>
-          <li>・お支払いは銀行振込のみとさせていただきます。</li>
-          <li>・入会月より12か月経過の場合、別途更新料（33,000円）が発生いたします。</li>
-          <li>※1：登録開始完了月（使用ID発行月）より料金発生とさせていただきます（当月締翌月末請求）。</li>
-          <li>※2：入会及び成婚退会は入退会月にお支払い・清算となりますので予めご了承下さい。</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <hr class="rule wrap">
-
-  <section id="message">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <div class="kicker">MESSAGE</div>
-        <h2>代表者メッセージ</h2>
-      </div>
-      <div class="message-block reveal">
-        <div class="message-photo"><img src="images/ceo.jpg" alt="代表" onerror="this.parentElement.style.display='none'"></div>
-        <div class="message-text">
-          <h3 style="font-family:var(--font-display);font-size:18px;margin-bottom:20px;">フェリアパートナーズへようこそ</h3>
-          <p>結婚は人生を２倍に膨らませる旅です。人々が互いに引かれ合う「良いな」という感情から始まり、お互いを知り、好意を育み、愛情へと深めていく過程を、私たちは大切にしています。</p>
-          <p>人との関わりは、自身の内面を深く知る貴重な機会です。婚活は、人生をより豊かにするきっかけとなり得ます。私たちは、あなたの人生における仲人として、この素晴らしい旅の支持者となることを約束します。</p>
-          <p>あなた自身の人生を高められる様、この機会に私たちと共に歩みましょう。</p>
-          <div class="message-sign">結婚相談所フェリアパートナーズ代表　岡本 大</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="rule wrap">
-
-  <section id="access">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <div class="kicker">ACCESS</div>
-        <h2>アクセス</h2>
-        <p class="lead">ご来店の際は下記フォームかInstagramよりご予約の上お越しください。</p>
-      </div>
-      <div class="access-grid reveal">
-        <div class="access-info">
-          <dl>
-            <dt>相談所名</dt>
-            <dd>結婚相談所フェリアパートナーズ<br>（運営会社：HARMONIE-アルモ-株式会社）</dd>
-            <dt>住所</dt>
-            <dd>〒812-0013<br>福岡市博多区博多駅東１丁目３−３<br>博多ダイチビル402</dd>
-            <dt>電話番号</dt>
-            <dd>090-8648-2850</dd>
-            <dt>営業時間</dt>
-            <dd>平日 18:00〜21:00（土曜・祝日は要予約）</dd>
-            <dt>定休日</dt>
-            <dd>不定休</dd>
-          </dl>
-          <div class="social-links">
-            <a href="https://www.instagram.com/feria_partners/" aria-label="Instagram" target="_blank" rel="noopener">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
-            </a>
-            <a href="https://www.facebook.com/profile.php?id=61558333060219" aria-label="Facebook" target="_blank" rel="noopener">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 8h-2a2 2 0 0 0-2 2v3H9v3h2v6h3v-6h2.2l.8-3H14v-2a1 1 0 0 1 1-1h2z"/></svg>
-            </a>
+      <div class="c__item">
+        <div class="image__wrapper"><img src="images/strength01.jpg" alt="博多駅からのアクセス"></div>
+        <div class="content__text">
+          <div class="title__text">
+            <div class="num">01</div>
+            <img class="b__line" src="images/b_line.png" alt="">
+            <div class="t__txt">ACCESS</div>
+            <div class="c__txt">博多駅に近いのでアクセス抜群<br>仕事終わりに気軽に立ち寄れます</div>
           </div>
+          <p class="d__txt">博多駅から近く、アクセス抜群の当相談所では、仕事終わりでも立ち寄れるよう長い営業時間を設定しています。ビジネスマンや多忙な方々も気軽に訪問可能。随時相談対応で、あなたのスケジュールに合わせて柔軟に対応します。忙しい毎日の中でも、愛を見つけるチャンスを逃しません。</p>
         </div>
-        <div class="map-embed">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.4557860827217!2d130.4193891761903!3d33.593476641814306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x354191cf4cf3830d%3A0x322c85186b044c30!2z5pel5pys44CB44CSODEyLTAwMTMg56aP5bKh55yM56aP5bKh5biC5Y2a5aSa5Yy65Y2a5aSa6aeF5p2x77yR5LiB55uu77yT4oiS77yTIOWNmuWkmuODgOOCpOODgeODk-ODqw!5e0!3m2!1sja!2sru!4v1711069139813!5m2!1sja!2sru" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+
+      <div class="c__item">
+        <div class="image__wrapper"><img src="images/strength02.jpg" alt="専門スタッフによるマッチング支援"></div>
+        <div class="content__text">
+          <div class="title__text">
+            <div class="num">02</div>
+            <img class="b__line" src="images/b_line.png" alt="">
+            <div class="t__txt">SUPPORT</div>
+            <div class="c__txt">信頼と実績！専門スタッフによる<br>本格的なマッチング支援</div>
+          </div>
+          <p class="d__txt">経験豊富な男性スタッフが、美辞麗句を避けたリアルなアドバイスを提供します。知り合いを介した紹介では特別な値引きもあり、コストパフォーマンスも魅力的。入会後は、個性を深く理解するための性格診断からスタートし、最適なパートナー探しをサポートします。</p>
+        </div>
+      </div>
+
+      <div class="c__item">
+        <div class="image__wrapper"><img src="images/strength03.jpg" alt="オフィス面談の様子"></div>
+        <div class="content__text">
+          <div class="title__text">
+            <div class="num">03</div>
+            <img class="b__line" src="images/b_line.png" alt="">
+            <div class="t__txt">TRUST</div>
+            <div class="c__txt">安心のオフィス面談と<br>オーダーメイドデートプラン</div>
+          </div>
+          <p class="d__txt">当相談所は法人運営で、偽りのない透明性の高いサービスを心掛けています。オフィスでの面談により、安心して相談が可能です。また、デートに使用できるお店の紹介など、一人一人に合わせたオーダーメイドのデートプランを提供し、素敵な出会いの場を演出します。</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="flow__wrapper" id="flow">
+    <div class="content__inner wrap">
+      <div class="title__inner">
+        <div class="title__wrapper">
+          <div class="en">FLOW</div>
+          <div class="ja">ご成婚までの流れ</div>
+        </div>
+        <p class="t-detail">ご入会前の無料カウンセリングから成婚退会まで、専属スタッフが親身にサポートいたします。</p>
+      </div>
+      <div class="flow__items">
+        <div class="f__item"><div class="lbl__text"><span class="num">01</span><img class="icon" src="images/f_icon01.png" alt=""></div><div class="c__text">無料カウンセリング</div></div>
+        <img class="down-arrow" src="images/down_arrow.png" alt="">
+        <div class="f__item"><div class="lbl__text"><span class="num">02</span><img class="icon" src="images/f_icon02.png" alt=""></div><div class="c__text">ご入会手続き</div></div>
+        <img class="down-arrow" src="images/down_arrow.png" alt="">
+        <div class="f__item"><div class="lbl__text"><span class="num">03</span><img class="icon" src="images/f_icon03.png" alt=""></div><div class="c__text">プロフィール作成</div></div>
+        <img class="down-arrow" src="images/down_arrow.png" alt="">
+        <div class="f__item"><div class="lbl__text"><span class="num">04</span><img class="icon" src="images/f_icon04.png" alt=""></div><div class="c__text">活動開始</div></div>
+        <img class="down-arrow" src="images/down_arrow.png" alt="">
+        <div class="f__item"><div class="lbl__text"><span class="num">05</span><img class="icon" src="images/f_icon05.png" alt=""></div><div class="c__text">お見合い</div></div>
+        <img class="down-arrow" src="images/down_arrow.png" alt="">
+        <div class="f__item"><div class="lbl__text"><span class="num">06</span><img class="icon" src="images/f_icon06.png" alt=""></div><div class="c__text">仮交際〜真剣交際</div></div>
+        <img class="down-arrow" src="images/down_arrow.png" alt="">
+        <div class="f__item"><div class="lbl__text"><span class="num">07</span><img class="icon" src="images/f_icon07.png" alt=""></div><div class="c__text">プロポーズ・成婚退会</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="price__wrapper" id="price">
+    <div class="wrap">
+      <div class="title__inner">
+        <div class="title__wrapper">
+          <div class="en">PRICE</div>
+          <div class="ja">料金プラン</div>
+        </div>
+        <p class="d__txt">当相談所では分かりやすいプランをご用意しています。</p>
+      </div>
+      <div class="price__items">
+        <div class="p__item">
+          <div class="p__lbl">レギュラープラン</div>
+          <table>
+            <tr><td>初期費用※1</td><td>55,000<span>円</span></td></tr>
+            <tr><td>月会費</td><td>11,000<span>円</span></td></tr>
+            <tr><td>お見合料</td><td>0<span>円</span></td></tr>
+            <tr class="red"><td>ご成婚料</td><td>55,000<span>円</span></td></tr>
+          </table>
+        </div>
+      </div>
+      <ul class="price-notes">
+        <li>※初期費用には入会金、登録料、活動サポート費が含まれています。</li>
+        <li>※サービスクオリティ維持の為、会員人数の上限を30名とさせていただきます。</li>
+        <li>・お支払いは銀行振込のみとさせていただきます。</li>
+        <li>・入会月より12か月経過の場合、別途更新料（33,000円）が発生いたします。</li>
+        <li>※1：登録開始完了月（使用ID発行月）より料金発生とさせていただきます（当月締翌月末請求）。</li>
+        <li>※2：入会及び成婚退会は入退会月にお支払い・清算となりますので予めご了承下さい。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="message__wrapper" id="message">
+    <div class="ceo__image empty"></div>
+    <div class="content__inner wrap">
+      <div class="content__text">
+        <h3 class="lbl__txt">フェリアパートナーズへようこそ</h3>
+        <p class="c__txt">結婚は人生を２倍に膨らませる旅です。人々が互いに引かれ合う「良いな」という感情から始まり、お互いを知り、好意を育み、愛情へと深めていく過程を、私たちは大切にしています。</p>
+        <p class="c__txt">人との関わりは、自身の内面を深く知る貴重な機会です。婚活は、人生をより豊かにするきっかけとなり得ます。私たちは、あなたの人生における仲人として、この素晴らしい旅の支持者となることを約束します。</p>
+        <p class="c__txt">あなた自身の人生を高められる様、この機会に私たちと共に歩みましょう。</p>
+        <div class="name__txt">結婚相談所フェリアパートナーズ代表</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="access__wrapper" id="access">
+    <div class="map__inner">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.4557860827217!2d130.4193891761903!3d33.593476641814306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x354191cf4cf3830d%3A0x322c85186b044c30!2z5pel5pys44CB44CSODEyLTAwMTMg56aP5bKh55yM56aP5bKh5biC5Y2a5aSa5Yy65Y2a5aSa6aeF5p2x77yR5LiB55uu77yT4oiS77yTIOWNmuWkmuODgOOCpOODgeODk-ODqw!5e0!3m2!1sja!2sru!4v1711069139813!5m2!1sja!2sru" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    </div>
+    <div class="content__inner">
+      <div class="title__inner">
+        <div class="title__wrapper">
+          <div class="en">ACCESS</div>
+          <div class="ja">アクセス</div>
+        </div>
+        <p class="t__txt">ご来店の際は下記フォームか<br>Instagramよりご予約の上お越しください。</p>
+      </div>
+      <div class="info__inner">
+        <p class="c__txt">
+          結婚相談所フェリアパートナーズ<br>
+          （運営会社：HARMONIE-アルモ-株式会社）<br><br>
+          〒812-0013<br>
+          福岡市博多区博多駅東１丁目３−３<br>
+          博多ダイチビル402<br><br>
+          TEL：<a href="tel:09086482850">090-8648-2850</a><br>
+          営業時間：平日 18:00〜21:00（土曜・祝日は要予約）
+        </p>
+        <div class="sns__items">
+          <a href="https://www.instagram.com/feria_partners/" target="_blank" rel="noopener"><img src="images/insta.png" alt="Instagram"></a>
+          <a href="https://www.facebook.com/profile.php?id=61558333060219" target="_blank" rel="noopener"><img src="images/fb.png" alt="Facebook"></a>
         </div>
       </div>
     </div>
   </section>
 
-  <hr class="rule wrap">
-
-  <section id="contact">
+  <section class="contact__wrapper" id="contact">
     <div class="wrap">
-      <div class="sec-head reveal">
-        <div class="kicker">CONTACT</div>
-        <h2>無料カウンセリングフォーム</h2>
-        <p class="contact-note">当フォームは、お客様からのご質問やご要望を受け付けるためのものです。営業・勧誘などの目的でのご利用はご遠慮いただいております。ご理解とご協力のほど、何卒よろしくお願い申し上げます。</p>
-      </div>
+      <h2 class="lbl__txt">無料カウンセリングフォーム</h2>
+      <div class="content__inner">
+        <form id="inquiryForm">
 
-      <form class="inquiry reveal" id="inquiryForm">
-        <div class="field-row">
-          <div class="field">
-            <label for="f-name">お名前<span class="req">必須</span></label>
-            <input type="text" id="f-name" name="お名前" required>
+          <div class="cf-row">
+            <div class="cf-label">お名前<span class="required">必須</span></div>
+            <div class="cf-field"><input type="text" name="お名前" required></div>
           </div>
-          <div class="field">
-            <label for="f-kana">お名前カナ<span class="req">必須</span></label>
-            <input type="text" id="f-kana" name="お名前カナ" required>
+          <div class="cf-row">
+            <div class="cf-label">お名前カナ<span class="required">必須</span></div>
+            <div class="cf-field"><input type="text" name="お名前カナ" required></div>
           </div>
-        </div>
-
-        <div class="field-row">
-          <div class="field">
-            <label for="f-age">年齢<span class="req">必須</span></label>
-            <input type="text" id="f-age" name="年齢" required>
+          <div class="cf-row">
+            <div class="cf-label">年齢<span class="required">必須</span></div>
+            <div class="cf-field"><input type="text" class="age" name="年齢" required></div>
           </div>
-          <div class="field">
-            <label>性別<span class="req">必須</span></label>
-            <div class="radio-group">
-              <label><input type="radio" name="性別" value="男性" required> 男性</label>
-              <label><input type="radio" name="性別" value="女性"> 女性</label>
+          <div class="cf-row">
+            <div class="cf-label">性別<span class="required">必須</span></div>
+            <div class="cf-field radio-group">
+              <label><input type="radio" name="性別" value="男性" required>男性</label>
+              <label><input type="radio" name="性別" value="女性">女性</label>
             </div>
           </div>
-        </div>
+          <div class="cf-row">
+            <div class="cf-label">ご職業</div>
+            <div class="cf-field"><input type="text" name="ご職業"></div>
+          </div>
+          <div class="cf-row">
+            <div class="cf-label">電話番号<span class="required">必須</span></div>
+            <div class="cf-field"><input type="tel" name="電話番号" required></div>
+          </div>
+          <div class="cf-row">
+            <div class="cf-label">都道府県<span class="required">必須</span></div>
+            <div class="cf-field select-wrap">
+              <select name="都道府県" required>
+                <option value="">選択してください</option>
+                <option>福岡県</option><option>北海道</option><option>青森県</option><option>岩手県</option><option>宮城県</option><option>秋田県</option><option>山形県</option><option>福島県</option><option>茨城県</option><option>栃木県</option><option>群馬県</option><option>埼玉県</option><option>千葉県</option><option>東京都</option><option>神奈川県</option><option>新潟県</option><option>富山県</option><option>石川県</option><option>福井県</option><option>山梨県</option><option>長野県</option><option>岐阜県</option><option>静岡県</option><option>愛知県</option><option>三重県</option><option>滋賀県</option><option>京都府</option><option>大阪府</option><option>兵庫県</option><option>奈良県</option><option>和歌山県</option><option>鳥取県</option><option>島根県</option><option>岡山県</option><option>広島県</option><option>山口県</option><option>徳島県</option><option>香川県</option><option>愛媛県</option><option>高知県</option><option>佐賀県</option><option>長崎県</option><option>熊本県</option><option>大分県</option><option>宮崎県</option><option>鹿児島県</option><option>沖縄県</option>
+              </select>
+            </div>
+          </div>
+          <div class="cf-row">
+            <div class="cf-label">メールアドレス<span class="required">必須</span></div>
+            <div class="cf-field"><input type="email" name="メールアドレス" required></div>
+          </div>
+          <div class="cf-row">
+            <div class="cf-label">カウンセリング方法<span class="required">必須</span></div>
+            <div class="cf-field radio-group">
+              <label><input type="radio" name="カウンセリング方法" value="対面" required>対面</label>
+              <label><input type="radio" name="カウンセリング方法" value="オンライン">オンライン</label>
+            </div>
+          </div>
+          <div class="cf-row">
+            <div class="cf-label">面談希望日時／第１希望<span class="required">必須</span></div>
+            <div class="cf-field"><input type="text" name="面談希望日時_第1希望" placeholder="例：4/20（日）14:00〜" required></div>
+          </div>
+          <div class="cf-row">
+            <div class="cf-label">面談希望日時／第２希望<span class="required">必須</span></div>
+            <div class="cf-field"><input type="text" name="面談希望日時_第2希望" required></div>
+          </div>
+          <div class="cf-row">
+            <div class="cf-label">面談希望日時／第３希望<span class="required">必須</span></div>
+            <div class="cf-field"><input type="text" name="面談希望日時_第3希望" required></div>
+          </div>
+          <div class="cf-row">
+            <div class="cf-label">ご質問など</div>
+            <div class="cf-field"><textarea name="ご質問など"></textarea></div>
+          </div>
 
-        <div class="field-row">
-          <div class="field">
-            <label for="f-job">ご職業</label>
-            <input type="text" id="f-job" name="ご職業">
+          <div class="privacy-box">
+            <p>下記ボタンクリックで弊社<a href="https://harmo.co.jp/privacy.html" target="_blank" rel="noopener">プライバシーポリシー</a>記載の個人情報の取扱いに同意したものとみなします。</p>
           </div>
-          <div class="field">
-            <label for="f-tel">電話番号<span class="req">必須</span></label>
-            <input type="tel" id="f-tel" name="電話番号" required>
-          </div>
-        </div>
-
-        <div class="field-row">
-          <div class="field">
-            <label for="f-pref">都道府県<span class="req">必須</span></label>
-            <select id="f-pref" name="都道府県" required>
-              <option value="">選択してください</option>
-              <option>福岡県</option><option>北海道</option><option>青森県</option><option>岩手県</option><option>宮城県</option><option>秋田県</option><option>山形県</option><option>福島県</option><option>茨城県</option><option>栃木県</option><option>群馬県</option><option>埼玉県</option><option>千葉県</option><option>東京都</option><option>神奈川県</option><option>新潟県</option><option>富山県</option><option>石川県</option><option>福井県</option><option>山梨県</option><option>長野県</option><option>岐阜県</option><option>静岡県</option><option>愛知県</option><option>三重県</option><option>滋賀県</option><option>京都府</option><option>大阪府</option><option>兵庫県</option><option>奈良県</option><option>和歌山県</option><option>鳥取県</option><option>島根県</option><option>岡山県</option><option>広島県</option><option>山口県</option><option>徳島県</option><option>香川県</option><option>愛媛県</option><option>高知県</option><option>佐賀県</option><option>長崎県</option><option>熊本県</option><option>大分県</option><option>宮崎県</option><option>鹿児島県</option><option>沖縄県</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="f-email">メールアドレス<span class="req">必須</span></label>
-            <input type="email" id="f-email" name="メールアドレス" required>
-          </div>
-        </div>
-
-        <div class="field">
-          <label>カウンセリング方法<span class="req">必須</span></label>
-          <div class="radio-group">
-            <label><input type="radio" name="カウンセリング方法" value="対面" required> 対面</label>
-            <label><input type="radio" name="カウンセリング方法" value="オンライン"> オンライン</label>
-          </div>
-        </div>
-
-        <div class="field-row">
-          <div class="field">
-            <label for="f-d1">面談希望日時／第１希望<span class="req">必須</span></label>
-            <input type="text" id="f-d1" name="面談希望日時_第1希望" placeholder="例：4/20（日）14:00〜" required>
-          </div>
-          <div class="field">
-            <label for="f-d2">面談希望日時／第２希望<span class="req">必須</span></label>
-            <input type="text" id="f-d2" name="面談希望日時_第2希望" required>
-          </div>
-        </div>
-        <div class="field">
-          <label for="f-d3">面談希望日時／第３希望<span class="req">必須</span></label>
-          <input type="text" id="f-d3" name="面談希望日時_第3希望" required>
-        </div>
-
-        <div class="field">
-          <label for="f-msg">ご質問など</label>
-          <textarea id="f-msg" name="ご質問など"></textarea>
-        </div>
-
-        <div class="field">
           <button type="submit" class="submit-btn">送信する</button>
-          <p class="privacy-note">下記ボタンクリックで弊社<a href="https://harmo.co.jp/privacy.html" target="_blank" rel="noopener">プライバシーポリシー</a>記載の個人情報の取扱いに同意したものとみなします。</p>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   </section>
 
@@ -548,59 +571,34 @@
 
 <footer>
   <div class="wrap">
-    <img src="images/emblem.png" alt="フェリアパートナーズ">
-    <div class="flinks">
-      <a href="https://harmo.co.jp/index.html#three" target="_blank" rel="noopener">運営会社</a>
-      <a href="https://harmo.co.jp/privacy.html" target="_blank" rel="noopener">プライバシーポリシー</a>
-    </div>
-    <div class="copyright">©Feria PARTNERS.</div>
+    <img class="f__logo" src="images/f_logo.png" alt="フェリアパートナーズ">
+    <ul>
+      <li><a href="https://harmo.co.jp/index.html#three" target="_blank" rel="noopener">運営会社</a></li>
+      <li><a href="https://harmo.co.jp/privacy.html" target="_blank" rel="noopener">プライバシーポリシー</a></li>
+      <li><span>©Feria PARTNERS.</span></li>
+    </ul>
   </div>
 </footer>
 
 <script>
-  // header solid on scroll
-  const header = document.getElementById('siteHeader');
-  window.addEventListener('scroll', () => {
-    header.classList.toggle('solid', window.scrollY > 40);
-  });
-
-  // mobile nav
-  const hamburger = document.getElementById('hamburger');
-  const mainNav = document.getElementById('mainNav');
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('open');
-    mainNav.classList.toggle('open');
+  const spMenu = document.getElementById('spMenu');
+  const navMenu = document.getElementById('navMenu');
+  spMenu.addEventListener('click', () => {
+    spMenu.classList.toggle('open');
+    navMenu.classList.toggle('open');
   });
   document.querySelectorAll('[data-nav]').forEach(a => {
     a.addEventListener('click', () => {
-      hamburger.classList.remove('open');
-      mainNav.classList.remove('open');
+      spMenu.classList.remove('open');
+      navMenu.classList.remove('open');
     });
   });
 
-  // scroll reveal
-  const revealEls = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in');
-        io.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15 });
-  revealEls.forEach(el => io.observe(el));
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    revealEls.forEach(el => el.classList.add('in'));
-  }
-
-  // contact form -> mailto
   document.getElementById('inquiryForm').addEventListener('submit', function (e) {
     e.preventDefault();
     const fd = new FormData(this);
     const lines = [];
-    for (const [key, value] of fd.entries()) {
-      lines.push(`${key}：${value}`);
-    }
+    for (const [key, value] of fd.entries()) lines.push(`${key}：${value}`);
     const subject = encodeURIComponent('【フェリアパートナーズ】無料カウンセリングフォームからのお問い合わせ');
     const body = encodeURIComponent(lines.join('\n'));
     window.location.href = `mailto:info@harmo.co.jp?subject=${subject}&body=${body}`;
