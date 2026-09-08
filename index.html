@@ -1,4 +1,4 @@
-r<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
@@ -25,9 +25,10 @@ r<!DOCTYPE html>
     --gray:#666;
     --border:#e0e0e0;
     --link:#3333B1;
-    --navy:#4e280b;
-    --gold:#ffa88b;
-    --gold-light:#ffcab5;
+    --navy:#111f3d;
+    --navy-deep:#0b1730;
+    --gold:#c9a24a;
+    --gold-light:#e9d18e;
     --font-mincho:'Shippori Mincho', serif;
     --font-didot:'Playfair Display', serif;
     --font-en:'Jost', sans-serif;
@@ -183,20 +184,20 @@ r<!DOCTYPE html>
     letter-spacing:.14em;color:var(--navy);display:inline-block;
   }
   .price-head .sub{
-    font-family:'Cormorant Garamond',serif;font-style:italic;letter-spacing:.42em;font-size:13px;
-    color:var(--gold);margin-top:16px;padding-left:.42em;
+    font-family:var(--font-en);font-style:normal;letter-spacing:.38em;font-size:12.5px;
+    color:var(--gold);margin-top:16px;padding-left:.38em;
   }
 
   .price-cards{margin-top:76px;display:flex;justify-content:center;gap:40px;flex-wrap:wrap;align-items:stretch;}
   .price-card{
-    position:relative;width:100%;max-width:420px;border:1px solid var(--gold);border-radius:16px;
-    padding:52px 40px 46px;background:#fff;box-shadow:0 18px 40px rgba(78,40,11,.07);
+    position:relative;width:100%;max-width:420px;border:1.5px solid var(--gold);border-radius:20px;
+    padding:52px 40px 46px;background:#fff;box-shadow:0 18px 40px rgba(16,31,61,.08);
   }
   .price-card::before{
-    content:'';position:absolute;inset:8px;border:1px solid rgba(255,168,139,.5);border-radius:12px;pointer-events:none;
+    content:'';position:absolute;inset:6px;border:1px solid rgba(201,162,74,.55);border-radius:16px;pointer-events:none;
   }
   .price-card.premium{background:var(--navy);color:#fff;}
-  .price-card.premium::before{border-color:rgba(255,202,181,.3);}
+  .price-card.premium::before{border-color:rgba(233,209,142,.35);}
   .price-card .ribbon{
     position:absolute;top:-20px;left:50%;transform:translateX(-50%);z-index:2;
     background:linear-gradient(180deg,var(--gold-light),var(--gold));color:var(--navy);
@@ -212,7 +213,7 @@ r<!DOCTYPE html>
     text-align:center;color:var(--gray);margin-top:16px;
   }
   .price-card.premium .p-tagline{color:rgba(255,255,255,.72);}
-  .price-card hr{border:none;border-top:1px solid rgba(255,168,139,.45);margin:28px 0;}
+  .price-card hr{border:none;border-top:1px solid rgba(201,162,74,.4);margin:28px 0;}
   .price-rows .row{display:flex;justify-content:space-between;align-items:baseline;padding:13px 0;}
   .price-rows .label{font-family:var(--font-mincho);font-size:13.5px;font-weight:500;letter-spacing:.05em;color:var(--navy);}
   .price-card.premium .price-rows .label{color:var(--gold-light);}
@@ -226,7 +227,7 @@ r<!DOCTYPE html>
     content:'✓';flex-shrink:0;width:21px;height:21px;border-radius:50%;
     background:linear-gradient(180deg,var(--gold-light),var(--gold));color:#fff;
     font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:2px;
-    box-shadow:0 2px 5px rgba(78,40,11,.25);
+    box-shadow:0 2px 5px rgba(16,31,61,.3);
   }
 
   .price-banner{
@@ -245,6 +246,7 @@ r<!DOCTYPE html>
 
   .price-brand{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:76px;}
   .price-brand img{width:60px;height:auto;}
+  .price-brand .crest{flex-shrink:0;}
   .price-brand .brand-text{display:flex;flex-direction:column;}
   .price-brand .brand-text strong{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:20px;color:var(--navy);letter-spacing:.06em;}
   .price-brand .brand-text span{font-size:11.5px;color:var(--gray);margin-top:4px;letter-spacing:.05em;}
@@ -531,7 +533,19 @@ r<!DOCTYPE html>
       <p class="price-note">※料金はすべて税込表示です</p>
 
       <div class="price-brand">
-        <img src="images/logo.png" alt="Feria Partners">
+        <svg class="crest" viewBox="0 0 80 92" width="52" height="60">
+          <path d="M40 4 L74 16 V44 C74 66 60 80 40 88 C20 80 6 66 6 44 V16 Z"
+                fill="none" stroke="url(#goldGrad)" stroke-width="2"/>
+          <path d="M40 12 L66 21 V44 C66 61 55 72 40 79 C25 72 14 61 14 44 V21 Z"
+                fill="none" stroke="url(#goldGrad)" stroke-width="1"/>
+          <text x="40" y="52" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="26" font-weight="600" fill="url(#goldGrad)">FP</text>
+          <defs>
+            <linearGradient id="goldGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#e9d18e"/>
+              <stop offset="1" stop-color="#c9a24a"/>
+            </linearGradient>
+          </defs>
+        </svg>
         <div class="brand-text">
           <strong>Feria Partners</strong>
           <span>出会いを、人生の力に。</span>
