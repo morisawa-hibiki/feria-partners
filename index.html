@@ -25,6 +25,9 @@
     --gray:#666;
     --border:#e0e0e0;
     --link:#3333B1;
+    --navy:#4e280b;
+    --gold:#ffa88b;
+    --gold-light:#ffcab5;
     --font-mincho:'Shippori Mincho', serif;
     --font-didot:'Playfair Display', serif;
     --font-en:'Jost', sans-serif;
@@ -171,50 +174,81 @@
   .f__item .c__text{font-family:var(--font-mincho);font-size:16px;letter-spacing:.03em;line-height:1.6;padding:16px 20px;color:var(--gray);}
   .down-arrow{width:22px;height:11px;object-fit:contain;display:block;margin:8px auto;}
 
-  /* ---------- price ---------- */
-  .price__wrapper{background:var(--cream);padding:60px 0 130px;}
-  .price__wrapper .title__inner{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;}
-  .price__wrapper .d__txt{font-weight:bold;font-size:14px;line-height:1.9;color:var(--gray);max-width:34ch;}
-  .price__items{margin-top:70px;display:flex;justify-content:center;gap:32px;flex-wrap:wrap;align-items:flex-start;}
-  .p__item{width:100%;max-width:420px;border-radius:20px;overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,.06);background:#fff;}
-  .p__item.premium{position:relative;border-top:4px solid var(--coral);}
-  .p__item .p__lbl{
-    font-family:var(--font-mincho);font-weight:500;font-size:20px;letter-spacing:.03em;
-    padding:26px 0;text-align:center;color:#fff;background:var(--coral);
+  /* ---------- price (white/navy/gold) ---------- */
+  .price__wrapper{background:#fbfaf7;padding:100px 0 120px;}
+  .price-head{text-align:center;}
+  .price-head .line{display:inline-block;width:64px;height:1px;background:var(--gold);vertical-align:middle;margin:0 20px 8px;}
+  .price-head h2{
+    font-family:var(--font-mincho);font-weight:700;font-size:clamp(28px,3.4vw,40px);
+    letter-spacing:.08em;color:var(--navy);display:inline-block;
   }
-  .p__item.premium .p__lbl{background:var(--brown);}
-  .p__item .p__feature{padding:22px 26px;border-bottom:1px solid var(--border);}
-  .p__item .p__feature dt{font-size:12px;color:var(--coral);letter-spacing:.05em;margin-bottom:6px;}
-  .p__item.premium .p__feature dt{color:var(--brown);}
-  .p__item .p__feature dd{font-size:13.5px;line-height:1.7;color:var(--gray);}
-  .p__item table{width:100%;border-collapse:collapse;}
-  .p__item table tr:nth-child(2n) td{background:#efefef;}
-  .p__item table tr td{font-weight:bold;font-size:14px;padding:20px 0 20px 28px;text-align:left;color:var(--gray);background:#fff;}
-  .p__item table tr td:last-child{font-size:24px;text-align:center;padding-left:0;color:var(--gray);}
-  .p__item table tr td:last-child span{font-size:13px;}
-  .p__item table tr.red td:last-child{color:var(--magenta);}
-  ul.price-notes{margin-top:2em;font-size:12px;line-height:1.9;color:var(--gray);}
-  ul.price-notes li{margin-left:1.2em;}
-
-  /* process bar */
-  .process-bar{
-    margin-top:70px;background:var(--brown);border-radius:12px;overflow:hidden;
-    display:flex;flex-wrap:wrap;color:#fff;
-  }
-  .process-bar .step{flex:1;min-width:130px;padding:20px 24px;font-family:var(--font-mincho);font-size:15px;letter-spacing:.03em;position:relative;text-align:center;}
-  .process-bar .step+.step::before{content:'→';position:absolute;left:-2px;top:50%;transform:translateY(-50%);opacity:.6;}
-  @media(max-width:700px){
-    .process-bar{flex-direction:column;}
-    .process-bar .step+.step::before{content:'↓';left:50%;top:-2px;transform:translate(-50%,0);}
+  .price-head .sub{
+    font-family:var(--font-en);letter-spacing:.4em;font-size:12px;color:var(--gold);margin-top:14px;
   }
 
-  /* callout note */
-  .price-callout{
-    margin-top:36px;padding:18px 24px;background:#fff;border-left:4px solid var(--coral);
-    font-size:13.5px;line-height:1.9;color:var(--gray);
+  .price-cards{margin-top:70px;display:flex;justify-content:center;gap:36px;flex-wrap:wrap;align-items:stretch;}
+  .price-card{
+    position:relative;width:100%;max-width:420px;border:1px solid var(--gold);border-radius:8px;
+    padding:46px 34px 40px;background:#fff;box-shadow:0 14px 34px rgba(16,31,61,.06);
   }
-  .price-callout strong{color:var(--brown);}
-  .price-footnote{margin-top:24px;font-size:11px;color:#999;line-height:1.8;}
+  .price-card::before{
+    content:'';position:absolute;inset:7px;border:1px solid rgba(201,162,74,.45);border-radius:5px;pointer-events:none;
+  }
+  .price-card.premium{background:var(--navy);color:#fff;}
+  .price-card.premium::before{border-color:rgba(233,209,142,.35);}
+  .price-card .ribbon{
+    position:absolute;top:-19px;left:50%;transform:translateX(-50%);z-index:2;
+    background:linear-gradient(180deg,var(--gold-light),var(--gold));color:var(--navy);
+    font-family:var(--font-mincho);font-weight:700;font-size:13px;letter-spacing:.08em;
+    padding:9px 30px;border-radius:20px;box-shadow:0 6px 14px rgba(0,0,0,.18);
+  }
+  .price-card h3{
+    font-family:var(--font-mincho);font-weight:700;font-size:26px;letter-spacing:.04em;text-align:center;color:var(--navy);
+  }
+  .price-card.premium h3{color:var(--gold-light);}
+  .price-card .p-tagline{
+    font-family:var(--font-mincho);font-size:13.5px;line-height:1.9;text-align:center;color:var(--gray);margin-top:14px;
+  }
+  .price-card.premium .p-tagline{color:rgba(255,255,255,.75);}
+  .price-card hr{border:none;border-top:1px solid rgba(201,162,74,.4);margin:26px 0;}
+  .price-rows .row{display:flex;justify-content:space-between;align-items:baseline;padding:12px 0;}
+  .price-rows .label{font-family:var(--font-mincho);font-size:14px;font-weight:600;color:var(--navy);}
+  .price-card.premium .price-rows .label{color:var(--gold-light);}
+  .price-rows .value{font-family:var(--font-didot);font-weight:700;font-size:26px;color:var(--navy);}
+  .price-card.premium .price-rows .value{color:var(--gold-light);}
+  .price-rows .value small{font-family:var(--font-body);font-weight:500;font-size:12px;margin-left:3px;}
+  .checklist li{display:flex;align-items:flex-start;gap:12px;font-size:14px;line-height:1.6;color:var(--navy);margin-bottom:16px;}
+  .checklist li:last-child{margin-bottom:0;}
+  .price-card.premium .checklist li{color:#fff;}
+  .checklist li::before{
+    content:'✓';flex-shrink:0;width:22px;height:22px;border-radius:50%;
+    background:linear-gradient(180deg,var(--gold-light),var(--gold));color:#fff;
+    font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1px;
+  }
+
+  .price-banner{
+    position:relative;max-width:600px;margin:64px auto 0;padding:16px 44px;text-align:center;
+    background:linear-gradient(90deg,var(--gold),var(--gold-light),var(--gold));color:#fff;
+    font-family:var(--font-mincho);font-weight:700;font-size:15px;letter-spacing:.02em;border-radius:3px;
+  }
+  .price-banner .gift{margin-right:10px;}
+  .price-banner::before,.price-banner::after{
+    content:'';position:absolute;top:0;width:0;height:0;border-top:24px solid transparent;border-bottom:24px solid transparent;
+  }
+  .price-banner::before{left:-18px;border-right:18px solid var(--gold);}
+  .price-banner::after{right:-18px;border-left:18px solid var(--gold);}
+  .price-note{text-align:center;font-size:12px;color:var(--gray);margin-top:20px;}
+
+  .price-brand{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:70px;}
+  .price-brand img{width:64px;height:auto;}
+  .price-brand .brand-text{display:flex;flex-direction:column;}
+  .price-brand .brand-text strong{font-family:var(--font-mincho);font-size:18px;color:var(--navy);letter-spacing:.03em;}
+  .price-brand .brand-text span{font-size:11.5px;color:var(--gray);margin-top:4px;letter-spacing:.05em;}
+
+  @media(max-width:760px){
+    .price-cards{gap:50px;}
+    .price-banner{padding:16px 26px;font-size:13px;}
+  }
 
   /* ---------- message ---------- */
   .message__wrapper{padding:50px 0 130px;background:var(--coral);position:relative;overflow:hidden;}
@@ -442,71 +476,63 @@
 
   <section class="price__wrapper" id="price">
     <div class="wrap">
-      <div class="title__inner">
-        <div class="title__wrapper">
-          <div class="en">PRICE</div>
-          <div class="ja">料金プラン</div>
-        </div>
-        <p class="d__txt">「活動設計」と「人生設計」、どちらも明確な料金でご案内しています。</p>
+      <div class="price-head">
+        <span class="line"></span><h2>料金プラン</h2><span class="line"></span>
+        <div class="sub">PRICE PLAN</div>
       </div>
-      <div class="price__items">
 
-        <div class="p__item">
-          <div class="p__lbl">伴走プラン</div>
-          <dl class="p__feature">
-            <dt>初期設計</dt><dd>90分の価値観・活動設計</dd>
-          </dl>
-          <dl class="p__feature">
-            <dt>活動支援</dt><dd>プロフィール／月次面談／交際相談</dd>
-          </dl>
-          <dl class="p__feature">
-            <dt>毎月の可視化</dt><dd>申込・お見合い・交際・次アクション</dd>
-          </dl>
-          <table>
-            <tr><td>初期費用（税込）</td><td>88,000<span>円</span></td></tr>
-            <tr><td>月会費（税込）</td><td>16,500<span>円</span></td></tr>
-            <tr><td>成婚料（税込）</td><td>220,000<span>円</span></td></tr>
-          </table>
+      <div class="price-cards">
+
+        <div class="price-card">
+          <h3>伴走プラン</h3>
+          <p class="p-tagline">ともに考え、ともに進む。<br>確かな一歩を。</p>
+          <hr>
+          <div class="price-rows">
+            <div class="row"><span class="label">初期費用</span><span class="value">88,000<small>円(税込)</small></span></div>
+            <div class="row"><span class="label">月会費</span><span class="value">16,500<small>円(税込)</small></span></div>
+            <div class="row"><span class="label">成婚料</span><span class="value">220,000<small>円(税込)</small></span></div>
+          </div>
+          <hr>
+          <ul class="checklist">
+            <li>90分の価値観・活動設計</li>
+            <li>プロフィール作成サポート</li>
+            <li>月次面談</li>
+            <li>交際相談</li>
+          </ul>
         </div>
 
-        <div class="p__item premium">
-          <div class="p__lbl">人生設計プレミアム</div>
-          <dl class="p__feature">
-            <dt>初期設計</dt><dd>120分の人生設計・活動設計</dd>
-          </dl>
-          <dl class="p__feature">
-            <dt>活動支援</dt><dd>左記＋ライフプラン整理／隔週フォロー</dd>
-          </dl>
-          <dl class="p__feature">
-            <dt>毎月の可視化</dt><dd>左記＋意思決定論点のレビュー</dd>
-          </dl>
-          <table>
-            <tr><td>初期費用（税込）</td><td>143,000<span>円</span></td></tr>
-            <tr><td>月会費（税込）</td><td>22,000<span>円</span></td></tr>
-            <tr><td>成婚料（税込）</td><td>220,000<span>円</span></td></tr>
-          </table>
+        <div class="price-card premium">
+          <div class="ribbon">おすすめ</div>
+          <h3>人生設計プレミアム</h3>
+          <p class="p-tagline">結婚を、人生設計から考える。<br>より確かな未来のために。</p>
+          <hr>
+          <div class="price-rows">
+            <div class="row"><span class="label">初期費用</span><span class="value">143,000<small>円(税込)</small></span></div>
+            <div class="row"><span class="label">月会費</span><span class="value">22,000<small>円(税込)</small></span></div>
+            <div class="row"><span class="label">成婚料</span><span class="value">220,000<small>円(税込)</small></span></div>
+          </div>
+          <hr>
+          <ul class="checklist">
+            <li>120分の人生設計・活動設計</li>
+            <li>プロフィール作成サポート</li>
+            <li>専属担当制</li>
+            <li>隔週面談</li>
+            <li>成婚後3ヶ月のアフターフォロー</li>
+          </ul>
         </div>
 
       </div>
 
-      <div class="process-bar">
-        <div class="step">1. 設計</div>
-        <div class="step">2. 出会い</div>
-        <div class="step">3. 交際</div>
-        <div class="step">4. 決断</div>
-      </div>
+      <div class="price-banner"><span class="gift">🎁</span>※先着10名様は登録料33,000円が無料です</div>
+      <p class="price-note">※料金はすべて税込表示です</p>
 
-      <div class="price-callout">
-        先着10名は<strong>登録料33,000円を無料</strong>。値下げではなく、初期実績・口コミ・紹介をつくるための取得投資と位置付けています。
+      <div class="price-brand">
+        <img src="images/logo.png" alt="Feria Partners">
+        <div class="brand-text">
+          <strong>Feria Partners</strong>
+          <span>出会いを、人生の力に。</span>
+        </div>
       </div>
-
-      <ul class="price-notes">
-        <li>※初期費用には入会金、登録料、活動サポート費が含まれています。</li>
-        <li>※サービスクオリティ維持の為、会員人数の上限を30名とさせていただきます。</li>
-        <li>・お支払いは銀行振込のみとさせていただきます。</li>
-        <li>・入会月より12か月経過の場合、別途更新料（33,000円）が発生いたします。</li>
-      </ul>
-      <p class="price-footnote">※上記は提案料金です。競合他社の月会費相場（17,050〜18,700円）および成婚料相場（220,000円）を参考に設定しています。</p>
     </div>
   </section>
 
